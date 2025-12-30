@@ -1,0 +1,56 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-12-30 00:49:32.918118",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "my_name",
+  "image",
+  "target"
+ ],
+ "fields": [
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach",
+   "label": "image"
+  },
+  {
+   "fieldname": "target",
+   "fieldtype": "Data",
+   "label": "target"
+  },
+  {
+   "fieldname": "my_name",
+   "fieldtype": "Data",
+   "label": "my name"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-12-30 00:55:48.565109",
+ "modified_by": "Administrator",
+ "module": "Column Mapper",
+ "name": "Dummy For Test",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

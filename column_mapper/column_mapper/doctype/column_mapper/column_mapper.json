@@ -1,0 +1,111 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-12-26 13:19:34.280501",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "source_file",
+  "section_break_nlmd",
+  "document_type",
+  "section_break_tpwy",
+  "ref_doctype",
+  "column_break_jyeu",
+  "ref_doc",
+  "doc_field",
+  "mapper_section",
+  "field_mapper"
+ ],
+ "fields": [
+  {
+   "fieldname": "source_file",
+   "fieldtype": "Attach",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Source File",
+   "no_copy": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_nlmd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "ref_doctype",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Doctype",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "section_break_tpwy",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_jyeu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.ref_doctype && doc.document_type == \"Child Table\"",
+   "fieldname": "ref_doc",
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Document",
+   "mandatory_depends_on": "eval:doc.ref_doctype && doc.document_type == \"Child Table\"",
+   "options": "ref_doctype"
+  },
+  {
+   "depends_on": "eval:doc.ref_doc",
+   "fieldname": "doc_field",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Field",
+   "mandatory_depends_on": "eval:doc.ref_doc"
+  },
+  {
+   "fieldname": "mapper_section",
+   "fieldtype": "Section Break",
+   "label": "Mapper"
+  },
+  {
+   "fieldname": "field_mapper",
+   "fieldtype": "Table",
+   "label": "Field Mapper",
+   "options": "Field Mapper"
+  },
+  {
+   "fieldname": "document_type",
+   "fieldtype": "Select",
+   "label": "Document Type",
+   "options": "Table\nChild Table"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-12-30 00:24:23.883089",
+ "modified_by": "Administrator",
+ "module": "Column Mapper",
+ "name": "Column Mapper",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
