@@ -56,12 +56,12 @@
    "options": "ref_doctype"
   },
   {
-   "depends_on": "eval:doc.ref_doc",
+   "depends_on": "eval:doc.ref_doc && doc.document_type == \"Child Table\"",
    "fieldname": "doc_field",
    "fieldtype": "Data",
    "in_standard_filter": 1,
    "label": "Field",
-   "mandatory_depends_on": "eval:doc.ref_doc"
+   "mandatory_depends_on": "eval:doc.ref_doc && doc.document_type == \"Child Table\""
   },
   {
    "fieldname": "mapper_section",
@@ -84,7 +84,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-30 00:24:23.883089",
+ "modified": "2025-12-30 22:35:28.631155",
  "modified_by": "Administrator",
  "module": "Column Mapper",
  "name": "Column Mapper",
