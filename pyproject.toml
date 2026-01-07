@@ -9,9 +9,8 @@ readme = "README.md"
 dynamic = ["version"]
 dependencies = [
     # "frappe~=15.0.0" # Installed and managed by bench.
-    "openpyxl (>=3.1.5,<4.0.0)"
+    "openpyxl~=3.1.5"
 ]
-version = "0.1.0"
 
 [build-system]
 requires = ["flit_core >=3.4,<4"]
