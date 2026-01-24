@@ -8,6 +8,7 @@ from typing_extensions import NotRequired
 from io import BytesIO
 from PIL import Image as Img
 from frappe.model.document import Document
+from frappe.realtime import publish_realtime
 from openpyxl import load_workbook
 from openpyxl.worksheet.worksheet import Worksheet
 from openpyxl.drawing.image import Image
@@ -38,6 +39,7 @@ class ColumnMapper(Document):
 			return None
 
 		ws = self._read_file()
+		rows_count = ws.max_row
 		rows = ws.iter_rows(values_only=True)
 		next(rows)
 		for row_idx, row in enumerate(rows, start=1):
@@ -46,6 +48,8 @@ class ColumnMapper(Document):
 				self.insert_into_table(record)
 			else:
 				self.insert_into_child_table(record)
+			self.publish_progress_bar((row_idx / rows_count) * 100, row_idx)
+		self.publish_progress_bar(100, rows_count - 1)
 
 	def upload_file(self, content, img_format) -> str:
 		file_doc = frappe.new_doc("File")
@@ -81,6 +85,13 @@ class ColumnMapper(Document):
 				)
 
 		return mapped_columns
+
+	def publish_progress_bar(self, percent: float, row_number: int):
+		frappe.publish_progress(
+			percent,
+			title="Importing Data...",
+			description=f"Importing row {row_number}",
+		)
 
 	def _create_record(
 		self,
@@ -129,7 +140,6 @@ class ColumnMapper(Document):
 	def _get_image(self, row, col) -> Image | None:
 		ws = self._read_file()
 		for img in ws._images:
-			print("image data = ", img.anchor._from)
 			if img.anchor._from.row == row and img.anchor._from.col == col:
 				return img
 		return None

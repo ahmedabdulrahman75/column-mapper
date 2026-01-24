@@ -5,16 +5,13 @@ frappe.ui.form.on("Column Mapper", {
 	refresh(frm) {
 		frm.add_custom_button(__("Import Data"), () => {
 			frm.call("import_data").then(() => {
-				frappe.msgprint({
-					title: __("Notification"),
-					indicator: "green",
-					message: __("Data Imported Successfully"),
-				});
-			});
-			frappe.msgprint({
-				title: __("Notification"),
-				indicator: "green",
-				message: __("Importing in Progress"),
+				frappe.show_alert(
+					{
+						message: __("Data Imported Successfully"),
+						indicator: "green",
+					},
+					5,
+				);
 			});
 		});
 	},
